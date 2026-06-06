@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shankar Kirana & General Store</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#f5f5f5;
+}
+
+header{
+background:#0a6ebd;
+color:white;
+padding:20px;
+text-align:center;
+}
+
+.hero{
+padding:20px;
+text-align:center;
+background:white;
+}
+
+.hero img{
+width:95%;
+max-width:900px;
+border-radius:10px;
+}
+
+.btn{
+display:inline-block;
+padding:12px 20px;
+margin:10px;
+background:#25D366;
+color:white;
+text-decoration:none;
+border-radius:8px;
+font-weight:bold;
+}
+
+.call{
+background:#0a6ebd;
+}
+
+.products{
+padding:20px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:15px;
+}
+
+.card{
+background:white;
+padding:15px;
+border-radius:10px;
+box-shadow:0 0 8px rgba(0,0,0,.1);
+}
+
+.card input{
+width:60px;
+}
+
+button{
+padding:8px 12px;
+background:#0a6ebd;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+#cart{
+background:white;
+margin:20px;
+padding:20px;
+border-radius:10px;
+}
+
+footer{
+background:#222;
+color:white;
+text-align:center;
+padding:15px;
+margin-top:20px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>🏪 Shankar Kirana & General Store</h1>
+<p>ताजपुर राज उर्फ बहोरा, पटना, बिहार</p>
+</header>
+
+<section class="hero">
+<img src="images/shop1.jpg" alt="Shop">
+
+<h2>ऑनलाइन ऑर्डर करें</h2>
+
+<a class="btn" href="tel:6202054884">📞 कॉल करें</a>
+
+<a class="btn"
+href="https://maps.app.goo.gl/btn8XwUsuv55NEpu9">
+📍 लोकेशन देखें
+</a>
+
+</section>
+
+<section class="products">
+
+<h2>🛒 उत्पाद सूची</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>चावल</h3>
+<p>₹ ___ / Kg</p>
+<input type="number" id="rice" value="1">
+<button onclick="addItem('चावल',rice.value)">कार्ट में जोड़ें</button>
+</div>
+
+<div class="card">
+<h3>आटा</h3>
+<p>₹ ___ / Kg</p>
+<input type="number" id="atta" value="1">
+<button onclick="addItem('आटा',atta.value)">कार्ट में जोड़ें</button>
+</div>
+
+<div class="card">
+<h3>दाल</h3>
+<p>₹ ___ / Kg</p>
+<input type="number" id="dal" value="1">
+<button onclick="addItem('दाल',dal.value)">कार्ट में जोड़ें</button>
+</div>
+
+<div class="card">
+<h3>चीनी</h3>
+<p>₹ ___ / Kg</p>
+<input type="number" id="sugar" value="1">
+<button onclick="addItem('चीनी',sugar.value)">कार्ट में जोड़ें</button>
+</div>
+
+<div class="card">
+<h3>सरसों तेल</h3>
+<p>₹ ___</p>
+<input type="number" id="oil" value="1">
+<button onclick="addItem('सरसों तेल',oil.value)">कार्ट में जोड़ें</button>
+</div>
+
+<div class="card">
+<h3>रिफाइंड तेल</h3>
+<p>₹ ___</p>
+<input type="number" id="refined" value="1">
+<button onclick="addItem('रिफाइंड तेल',refined.value)">कार्ट में जोड़ें</button>
+</div>
+
+<div class="card">
+<h3>बिस्कुट</h3>
+<p>₹ ___</p>
+<input type="number" id="biscuit" value="1">
+<button onclick="addItem('बिस्कुट',biscuit.value)">कार्ट में जोड़ें</button>
+</div>
+
+<div class="card">
+<h3>डेयरी उत्पाद</h3>
+<p>दूध • दही • पनीर • घी</p>
+<input type="number" id="dairy" value="1">
+<button onclick="addItem('डेयरी उत्पाद',dairy.value)">कार्ट में जोड़ें</button>
+</div>
+
+</div>
+
+</section>
+
+<div id="cart">
+
+<h2>🧾 आपका ऑर्डर</h2>
+
+<ul id="items"></ul>
+
+<input id="name" placeholder="नाम"><br><br>
+
+<input id="mobile" placeholder="मोबाइल नंबर"><br><br>
+
+<textarea id="address"
+placeholder="पूरा पता"></textarea>
+
+<br><br>
+
+<h3>भुगतान विकल्प</h3>
+
+<label>
+<input type="radio" name="pay" value="Cash on Delivery" checked>
+Cash on Delivery
+</label>
+
+<br>
+
+<label>
+<input type="radio" name="pay" value="UPI Payment">
+UPI Payment
+</label>
+
+<h3>UPI QR Code</h3>
+
+<img src="images/qr.jpg" width="250">
+
+<br><br>
+
+<button onclick="sendWhatsApp()">
+WhatsApp पर ऑर्डर भेजें
+</button>
+
+</div>
+
+<footer>
+
+<p>📞 6202054884</p>
+
+<p>© Shankar Kirana & General Store</p>
+
+</footer>
+
+<script>
+
+let cart=[];
+
+function addItem(name,qty){
+
+cart.push(name+" x "+qty);
+
+document.getElementById("items").innerHTML=
+cart.map(i=>"<li>"+i+"</li>").join("");
+
+}
+
+function sendWhatsApp(){
+
+let name=document.getElementById("name").value;
+
+let mobile=document.getElementById("mobile").value;
+
+let address=document.getElementById("address").value;
+
+let pay=document.querySelector(
+'input[name="pay"]:checked'
+).value;
+
+let msg=
+"नया ऑर्डर%0A%0A"+
+"नाम: "+name+"%0A"+
+"मोबाइल: "+mobile+"%0A"+
+"पता: "+address+"%0A%0A"+
+"सामान:%0A"+
+cart.join("%0A")+
+"%0A%0Aभुगतान: "+pay;
+
+window.open(
+"https://wa.me/916202054884?text="+msg
+);
+
+}
+
+</script>
+
+</body>
+</html>
